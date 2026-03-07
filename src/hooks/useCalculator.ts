@@ -3,14 +3,15 @@ import type { AngleMode, CalculatorState, HistoryEntry, InputType } from '../typ
 
 // ─── Expression Evaluator ─────────────────────────────────────────────────────
 
-type Token =
-  | { kind: 'num'; value: number }
-  | { kind: 'op'; value: string }
-  | { kind: 'func'; value: string }
-  | { kind: 'lparen' }
-  | { kind: 'rparen' }
-  | { kind: 'fact' }
-  | { kind: 'const'; value: 'π' | 'e' };
+interface NumToken { kind: 'num'; value: number }
+interface OpToken { kind: 'op'; value: string }
+interface FuncToken { kind: 'func'; value: string }
+interface LParenToken { kind: 'lparen' }
+interface RParenToken { kind: 'rparen' }
+interface FactToken { kind: 'fact' }
+interface ConstToken { kind: 'const'; value: 'π' | 'e' }
+
+type Token = NumToken | OpToken | FuncToken | LParenToken | RParenToken | FactToken | ConstToken;
 
 function tokenize(expr: string): Token[] {
   const tokens: Token[] = [];
@@ -83,8 +84,14 @@ function fromRadians(v: number, mode: AngleMode): number {
 }
 
 class Parser {
-  private pos = 0;
-  constructor(private tokens: Token[], private mode: AngleMode) {}
+  private pos: number = 0;
+  private tokens: Token[];
+  private mode: AngleMode;
+
+  constructor(tokens: Token[], mode: AngleMode) {
+    this.tokens = tokens;
+    this.mode = mode;
+  }
 
   parse(): number {
     const v = this.parseExpr();
@@ -96,13 +103,13 @@ class Parser {
   private consume(): Token { return this.tokens[this.pos++]; }
   private isOp(...ops: string[]): boolean {
     const t = this.peek();
-    return t?.kind === 'op' && ops.includes((t as { kind: 'op'; value: string }).value);
+    return t?.kind === 'op' && ops.includes((t as OpToken).value);
   }
 
   private parseExpr(): number {
     let v = this.parseTerm();
     while (this.isOp('+', '-')) {
-      const op = (this.consume() as { kind: 'op'; value: string }).value;
+      const op = (this.consume() as OpToken).value;
       const r = this.parseTerm();
       v = op === '+' ? v + r : v - r;
     }
@@ -112,7 +119,7 @@ class Parser {
   private parseTerm(): number {
     let v = this.parsePower();
     while (this.isOp('*', '/', 'mod')) {
-      const op = (this.consume() as { kind: 'op'; value: string }).value;
+      const op = (this.consume() as OpToken).value;
       const r = this.parsePower();
       if (op === '*') v *= r;
       else if (op === '/') {
@@ -150,10 +157,10 @@ class Parser {
     const t = this.peek();
     if (!t) throw new Error('Unexpected end');
 
-    if (t.kind === 'num') { this.consume(); return (t as { kind: 'num'; value: number }).value; }
+    if (t.kind === 'num') { this.consume(); return (t as NumToken).value; }
     if (t.kind === 'const') {
       this.consume();
-      return (t as { kind: 'const'; value: string }).value === 'π' ? Math.PI : Math.E;
+      return (t as ConstToken).value === 'π' ? Math.PI : Math.E;
     }
     if (t.kind === 'lparen') {
       this.consume();
@@ -163,7 +170,7 @@ class Parser {
       return v;
     }
     if (t.kind === 'func') {
-      const name = (this.consume() as { kind: 'func'; value: string }).value;
+      const name = (this.consume() as FuncToken).value;
       if (this.peek()?.kind !== 'lparen') throw new Error(`Expected ( after ${name}`);
       this.consume();
       const arg = this.parseExpr();
