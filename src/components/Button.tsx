@@ -1,7 +1,7 @@
 interface ButtonProps {
   label: string;
   onClick: () => void;
-  variant?: 'operator' | 'function' | 'equals' | 'default';
+  variant?: 'operator' | 'function' | 'equals' | 'sci' | 'active-sci' | 'default';
   wide?: boolean;
   active?: boolean;
 }
@@ -14,7 +14,7 @@ export function Button({ label, onClick, variant = 'default', wide = false, acti
         `calc-btn--${variant}`,
         wide ? 'calc-btn--wide' : '',
         active ? 'calc-btn--active' : '',
-      ].join(' ').trim()}
+      ].filter(Boolean).join(' ')}
       onClick={onClick}
     >
       {label}
