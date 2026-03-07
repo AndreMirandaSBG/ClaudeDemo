@@ -87,17 +87,17 @@ body {
 }
 
 .calc-btn--operator {
-  background: #e07b39;
+  background: #7c3aed;
   color: #fff;
 }
 
 .calc-btn--operator.calc-btn--active {
   background: #fff;
-  color: #e07b39;
+  color: #7c3aed;
 }
 
 .calc-btn--equals {
-  background: #e07b39;
+  background: #7c3aed;
   color: #fff;
 }
 
