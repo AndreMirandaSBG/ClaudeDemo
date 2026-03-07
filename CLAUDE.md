@@ -35,6 +35,42 @@ Keep business logic in hooks, UI in components, and shared types in types/.
 - CSS is plain CSS in `index.css` — no CSS modules or styled-components
 - Keep components presentational where possible; put logic in custom hooks
 
+## Testing
+
+All new hooks and components must have a corresponding test file.
+
+- **Hook tests**: `src/hooks/<hookName>.test.ts` — test logic in isolation using `renderHook` and `act` from `@testing-library/react`
+- **Component tests**: `src/components/<ComponentName>.test.tsx` — test user interactions using `render` and `screen` from `@testing-library/react`
+- Test framework: **Vitest** with `jsdom` environment and `@testing-library/jest-dom` matchers
+- Run tests locally with `npm test` before pushing
+
+### What to test
+
+- Every public function/operator in a hook (happy path + edge cases)
+- Key user interactions in components (clicks, display updates)
+- Error/boundary conditions (e.g. division by zero)
+
+### Example hook test pattern
+
+```ts
+import { renderHook, act } from '@testing-library/react';
+import { useMyHook } from './useMyHook';
+
+it('does something', () => {
+  const { result } = renderHook(() => useMyHook());
+  act(() => result.current.someAction());
+  expect(result.current.value).toBe('expected');
+});
+```
+
+### Vite/Vitest config
+
+`vite.config.ts` must import `defineConfig` from `vitest/config` (not `vite`) so TypeScript recognises the `test` property:
+
+```ts
+import { defineConfig } from 'vitest/config'
+```
+
 ## Branch Naming
 
 All Claude-created branches must follow this pattern:
