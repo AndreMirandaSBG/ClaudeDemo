@@ -15,10 +15,48 @@ body {
 
 .app {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
   padding: 16px;
+}
+
+/* Tab navigation */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  background: #16213e;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.tab-nav__btn {
+  padding: 8px 20px;
+  border: none;
+  background: transparent;
+  color: #888;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.tab-nav__btn:hover {
+  color: #ccc;
+  background: #1e2d5a;
+}
+
+.tab-nav__btn--active {
+  background: #0f3460;
+  color: #fff;
+}
+
+.tab-content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 /* Calculator shell */
@@ -292,4 +330,456 @@ body {
   .calc-btn--sci {
     font-size: 0.7rem;
   }
+}
+
+/* ─── Function Grapher ──────────────────────────────────────────────────────── */
+
+.grapher {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 640px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.grapher__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grapher__fn-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grapher__fn-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.grapher__fn-input {
+  flex: 1;
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  border-radius: 8px;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-family: monospace;
+  outline: none;
+}
+
+.grapher__fn-input:focus {
+  border-color: #5a7abf;
+}
+
+.grapher__toolbar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.grapher__btn {
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  color: #ccc;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.grapher__btn:hover {
+  background: #1e4a80;
+  color: #fff;
+}
+
+.grapher__btn--active {
+  background: #1e4a80;
+  color: #fff;
+  border-color: #5a7abf;
+}
+
+.grapher__btn--remove {
+  padding: 4px 8px;
+  color: #e74c3c;
+}
+
+.grapher__canvas {
+  border-radius: 8px;
+  display: block;
+  cursor: crosshair;
+  width: 100%;
+  height: auto;
+}
+
+.grapher__hint {
+  text-align: center;
+  color: #555;
+  font-size: 11px;
+}
+
+/* ─── Statistics ─────────────────────────────────────────────────────────────── */
+
+.statistics {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 640px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.statistics__input-area {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.statistics__input {
+  flex: 1;
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  border-radius: 8px;
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: monospace;
+  resize: vertical;
+  outline: none;
+}
+
+.statistics__input:focus {
+  border-color: #5a7abf;
+}
+
+.statistics__btn {
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  color: #ccc;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.statistics__btn:hover {
+  background: #1e4a80;
+  color: #fff;
+}
+
+.statistics__btn--active {
+  background: #1e4a80;
+  color: #fff;
+  border-color: #5a7abf;
+}
+
+.statistics__chart-types {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.statistics__canvas {
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.statistics__results {
+  background: #0f3460;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.statistics__results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.statistics__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statistics__stat span {
+  color: #888;
+  font-size: 11px;
+}
+
+.statistics__stat strong {
+  color: #fff;
+  font-size: 13px;
+}
+
+.statistics__regression {
+  margin-top: 8px;
+  color: #aaa;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.statistics__error {
+  color: #e74c3c;
+  font-size: 12px;
+  align-self: center;
+}
+
+/* ─── Complex Calculator ──────────────────────────────────────────────────────── */
+
+.complex {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  width: 700px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.complex__left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.complex__right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.complex__input-section {
+  background: #0f3460;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.complex__input-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.complex__label {
+  color: #888;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.complex__input {
+  width: 80px;
+  background: #162850;
+  border: 1px solid #2a4080;
+  border-radius: 6px;
+  color: #fff;
+  padding: 5px 8px;
+  font-size: 14px;
+  outline: none;
+  font-family: monospace;
+}
+
+.complex__input:focus {
+  border-color: #5a7abf;
+}
+
+.complex__plus {
+  color: #888;
+  font-size: 16px;
+}
+
+.complex__display {
+  margin-top: 6px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #adf;
+}
+
+.complex__pending {
+  background: #0a2040;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #f39c12;
+}
+
+.complex__binary-ops,
+.complex__unary-ops {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.complex__action-row {
+  display: flex;
+  gap: 6px;
+}
+
+.complex__btn {
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  color: #ccc;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.complex__btn:hover {
+  background: #1e4a80;
+  color: #fff;
+}
+
+.complex__btn--active {
+  background: #1e4a80;
+  border-color: #5a7abf;
+  color: #fff;
+}
+
+.complex__btn--equals {
+  background: #e67e22;
+  border-color: #e67e22;
+  color: #fff;
+  font-weight: bold;
+}
+
+.complex__btn--equals:hover {
+  background: #f39c12;
+}
+
+.complex__btn--equals:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.complex__btn--small {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+.complex__error {
+  color: #e74c3c;
+  font-size: 12px;
+}
+
+.complex__result {
+  background: #0f3460;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.complex__result-label {
+  color: #888;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.complex__result-rect {
+  color: #2ecc71;
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.complex__result-polar {
+  color: #3498db;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.complex__result-info {
+  color: #888;
+  font-family: monospace;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.complex__history {
+  background: #0a2040;
+  border-radius: 8px;
+  padding: 8px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.complex__history-header {
+  color: #888;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.complex__history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px 0;
+  border-bottom: 1px solid #1a3060;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.complex__history-item:last-child {
+  border-bottom: none;
+}
+
+.complex__history-expr {
+  color: #888;
+}
+
+.complex__history-result {
+  color: #2ecc71;
+}
+
+.complex__diagram-header {
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.complex__canvas {
+  border-radius: 8px;
+  display: block;
+}
+
+.complex__hint {
+  color: #555;
+  font-size: 11px;
+  text-align: center;
+}
+
+.complex__nth-roots-info {
+  color: #888;
+  font-size: 11px;
+  text-align: center;
 }
