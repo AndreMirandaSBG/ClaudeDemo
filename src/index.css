@@ -783,3 +783,721 @@ body {
   font-size: 11px;
   text-align: center;
 }
+
+/* ─── Surface Plotter ─────────────────────────────────────────────────────── */
+
+.surface-plotter {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 640px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.surface-plotter__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.surface-plotter__type-btns {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.surface-plotter__input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.surface-plotter__label {
+  color: #888;
+  font-size: 12px;
+  font-family: monospace;
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+.surface-plotter__param-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.surface-plotter__toolbar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.surface-plotter__info {
+  display: flex;
+  gap: 12px;
+  color: #555;
+  font-size: 11px;
+  font-family: monospace;
+}
+
+/* ─── Equation Solver ─────────────────────────────────────────────────────── */
+
+.solver {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 580px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.solver__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.solver__mode-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.solver__poly-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.solver__input {
+  width: 100%;
+}
+
+.solver__btns {
+  display: flex;
+  gap: 6px;
+}
+
+.solver__error {
+  color: #e74c3c;
+  font-size: 12px;
+  padding: 6px 10px;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.solver__results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.solver__roots-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.solver__roots-title {
+  color: #888;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.solver__roots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.solver__root {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: #0f3460;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.solver__root--complex {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.solver__root-label {
+  color: #888;
+  font-size: 13px;
+  min-width: 32px;
+}
+
+.solver__root-value {
+  color: #f1c40f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.solver__root-type {
+  color: #e74c3c;
+  font-size: 11px;
+  margin-left: auto;
+}
+
+.solver__steps {
+  background: #0a2040;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+.solver__step {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #aaa;
+  padding: 4px 0;
+  border-bottom: 1px solid #1a3060;
+}
+
+.solver__step:last-child {
+  border-bottom: none;
+}
+
+.solver__formula {
+  color: #7cb9f1;
+  font-family: monospace;
+  font-size: 11px;
+  background: rgba(124, 185, 241, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: block;
+  margin-top: 2px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.solver__canvas {
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #1a1a2e;
+}
+
+.solver__linear {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.solver__linear-hint {
+  color: #777;
+  font-size: 11px;
+  font-family: monospace;
+}
+
+.solver__matrix-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+  font-size: 13px;
+}
+
+.solver__matrix-input {
+  width: 60px;
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  border-radius: 6px;
+  color: #fff;
+  padding: 5px 8px;
+  font-size: 13px;
+  outline: none;
+  font-family: monospace;
+  text-align: center;
+}
+
+.solver__matrix-input:focus {
+  border-color: #5a7abf;
+}
+
+.solver__trig {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.solver__trig-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+}
+
+.solver__select {
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ─── Unit Converter ──────────────────────────────────────────────────────── */
+
+.converter {
+  background: #16213e;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 580px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.converter__cats {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.converter__cat-btn {
+  background: #0f3460;
+  border: 1px solid #2a4080;
+  color: #999;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.converter__cat-btn:hover {
+  background: #1e4a80;
+  color: #fff;
+}
+
+.converter__cat-btn--active {
+  background: #1e4a80;
+  color: #fff;
+  border-color: #5a7abf;
+}
+
+.converter__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #0f3460;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.converter__row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.converter__select {
+  flex: 1;
+  background: #16213e;
+  border: 1px solid #2a4080;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.converter__value-input {
+  width: 140px;
+  background: #16213e;
+  border: 1px solid #2a4080;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 14px;
+  font-family: monospace;
+  outline: none;
+  text-align: right;
+}
+
+.converter__value-input--result {
+  color: #2ecc71;
+  cursor: default;
+}
+
+.converter__value-input:focus {
+  border-color: #5a7abf;
+}
+
+.converter__swap-row {
+  display: flex;
+  justify-content: center;
+}
+
+.converter__dim-hint {
+  color: #666;
+  font-size: 11px;
+  font-family: monospace;
+  text-align: center;
+}
+
+.converter__chart {
+  border-radius: 8px;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #1a1a2e;
+}
+
+.converter__constants {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.converter__constants-title {
+  color: #888;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.converter__constants-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.converter__constant-card {
+  background: #0f3460;
+  border: 1px solid #1e3a70;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.converter__constant-card:hover {
+  background: #1e4a80;
+  border-color: #5a7abf;
+}
+
+.converter__constant-symbol {
+  color: #7cb9f1;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.converter__constant-name {
+  color: #aaa;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.converter__constant-value {
+  color: #f1c40f;
+  font-family: monospace;
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.converter__constant-unit {
+  color: #666;
+  font-size: 10px;
+  font-family: monospace;
+}
+
+/* ─── Calculus Visualizer ──────────────────────────────────────────────────── */
+
+.calculus-viz {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.calculus-viz__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 220px;
+  max-width: 240px;
+}
+
+.calculus-viz__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calculus-viz__label {
+  color: #aaa;
+  font-size: 12px;
+  white-space: nowrap;
+  min-width: 48px;
+  font-family: monospace;
+}
+
+.calculus-viz__mode-btns {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.calculus-viz__order-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.calculus-viz__slider {
+  flex: 1;
+  accent-color: #ef5350;
+  cursor: pointer;
+}
+
+.calculus-viz__num-input {
+  width: 70px;
+  background: #0f3460;
+  border: 1px solid #1e3a70;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 13px;
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.calculus-viz__num-input:focus {
+  outline: none;
+  border-color: #4fc3f7;
+}
+
+.calculus-viz__integral-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calculus-viz__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calculus-viz__steps-list {
+  background: #0f3460;
+  border: 1px solid #1e3a70;
+  border-radius: 8px;
+  padding: 10px 10px 10px 24px;
+  list-style: decimal;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.calculus-viz__steps-list li {
+  color: #ccc;
+  font-size: 11px;
+  font-family: monospace;
+  line-height: 1.4;
+}
+
+/* ─── Matrix Workspace ─────────────────────────────────────────────────────── */
+
+.matrix-workspace {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.matrix-workspace__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 280px;
+}
+
+.matrix-workspace__size-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.matrix-workspace__grids {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.matrix-workspace__grid-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.matrix-workspace__grid-label {
+  color: #7cb9f1;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.matrix-workspace__grid {
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+.matrix-workspace__cell {
+  width: 52px;
+  background: #0f3460;
+  border: 1px solid #1e3a70;
+  border-radius: 5px;
+  color: #e0e0e0;
+  font-size: 13px;
+  font-family: monospace;
+  padding: 5px;
+  text-align: center;
+}
+
+.matrix-workspace__cell:focus {
+  outline: none;
+  border-color: #4fc3f7;
+}
+
+.matrix-workspace__cell--result {
+  background: #0a2040;
+  color: #4fc3f7;
+  cursor: default;
+  padding: 5px;
+  display: block;
+  width: 52px;
+}
+
+.matrix-workspace__op-btns {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.matrix-workspace__result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #0f3460;
+  border: 1px solid #1e3a70;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.matrix-workspace__error {
+  color: #ef5350;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.matrix-workspace__scalar {
+  color: #4fc3f7;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.matrix-workspace__result-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.matrix-workspace__result-label {
+  color: #7cb9f1;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.matrix-workspace__eigenvalues {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.matrix-workspace__ev-row {
+  color: #ff9800;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.matrix-workspace__canvas {
+  border-radius: 8px;
+}
+
+/* ─── DiffEq Solver ────────────────────────────────────────────────────────── */
+
+.diffeq-solver {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.diffeq-solver__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 220px;
+  max-width: 240px;
+}
+
+.diffeq-solver__ic {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.diffeq-solver__legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #0f3460;
+  border: 1px solid #1e3a70;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.diffeq-solver__legend-item {
+  color: #aaa;
+  font-size: 12px;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

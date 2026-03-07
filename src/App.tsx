@@ -3,15 +3,27 @@ import { Calculator } from './components/Calculator';
 import { FunctionGrapher } from './components/FunctionGrapher';
 import { Statistics } from './components/Statistics';
 import { ComplexCalculator } from './components/ComplexCalculator';
+import { SurfacePlotter } from './components/SurfacePlotter';
+import { EquationSolver } from './components/EquationSolver';
+import { UnitConverter } from './components/UnitConverter';
+import { CalculusVisualizer } from './components/CalculusVisualizer';
+import { MatrixWorkspace } from './components/MatrixWorkspace';
+import { DiffEqSolver } from './components/DiffEqSolver';
 import './index.css';
 
-type Tab = 'calculator' | 'grapher' | 'statistics' | 'complex';
+type Tab = 'calculator' | 'grapher' | 'statistics' | 'complex' | 'surface' | 'solver' | 'converter' | 'calculus' | 'matrix' | 'diffeq';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'calculator', label: 'Calculator' },
   { id: 'grapher', label: 'Graph' },
   { id: 'statistics', label: 'Statistics' },
   { id: 'complex', label: 'Complex' },
+  { id: 'surface', label: '3D Surface' },
+  { id: 'solver', label: 'Solver' },
+  { id: 'converter', label: 'Converter' },
+  { id: 'calculus', label: 'Calculus' },
+  { id: 'matrix', label: 'Matrix' },
+  { id: 'diffeq', label: 'Diff Eq' },
 ];
 
 function App() {
@@ -36,6 +48,12 @@ function App() {
         {activeTab === 'grapher' && <FunctionGrapher />}
         {activeTab === 'statistics' && <Statistics />}
         {activeTab === 'complex' && <ComplexCalculator />}
+        {activeTab === 'surface' && <SurfacePlotter />}
+        {activeTab === 'solver' && <EquationSolver />}
+        {activeTab === 'converter' && <UnitConverter />}
+        {activeTab === 'calculus' && <CalculusVisualizer />}
+        {activeTab === 'matrix' && <MatrixWorkspace />}
+        {activeTab === 'diffeq' && <DiffEqSolver />}
       </div>
     </div>
   );
