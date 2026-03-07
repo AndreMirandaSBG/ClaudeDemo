@@ -1,95 +1,102 @@
 # CLAUDE.md
 
-This file provides guidance for AI assistants (Claude and others) working in this repository.
+Guidance for AI assistants working in this repository.
 
-## Project Status
+## Project Overview
 
-This is a **newly initialized repository** with no source code yet. This file establishes conventions and workflows to follow as the project is built out.
+- **Repo**: AndreMirandaSBG/ClaudeDemo
+- **Status**: Newly initialized — no source code yet
+- **Active branch**: `claude/claude-md-mmfouyvdon9byt37-QeHJP`
 
-## Repository Overview
-
-- **Remote**: AndreMirandaSBG/ClaudeDemo
-- **Primary development branch**: `claude/claude-md-mmfouyvdon9byt37-QeHJP` (or as specified per task)
+---
 
 ## Git Workflow
 
-### Branch Strategy
-- Never push directly to `main` or `master` without explicit user permission.
-- Feature and task branches should follow the naming pattern: `claude/<short-description>-<session-id>`.
-- Always confirm the target branch before pushing.
+### Branches
+- Do **not** push to `main` or `master` without explicit user permission.
+- Task branches follow the pattern: `claude/<description>-<session-id>`.
+- Confirm the target branch before every push.
 
-### Commit Conventions
-- Write clear, imperative-style commit messages (e.g., `Add user authentication module`).
-- Keep commits focused — one logical change per commit.
-- Do not amend published commits; create a new commit instead.
+### Commits
+- Imperative-style messages: `Add login endpoint`, `Fix null check in parser`.
+- One logical change per commit.
+- Never amend published commits — always create a new one.
 
-### Push Protocol
+### Pushing
 ```bash
 git push -u origin <branch-name>
 ```
-- Retry on network failure with exponential backoff: 2s, 4s, 8s, 16s (max 4 retries).
-- Never use `--force` unless explicitly instructed.
-- Never skip hooks (`--no-verify`).
+- On network failure, retry up to 4 times: wait 2s, 4s, 8s, 16s between attempts.
+- Never `--force` push unless explicitly told to.
+- Never `--no-verify`.
 
-## Development Conventions (To Be Updated as Project Grows)
+---
 
-Once source code is added, update this file with:
+## AI Assistant Rules
 
-### Code Style
-- Language, linter, and formatter settings (e.g., ESLint, Prettier, Black, rustfmt).
-- Naming conventions for files, functions, variables, and classes.
-- Import ordering rules.
+### Before Making Changes
+1. Read every file you intend to modify.
+2. Understand the existing code before suggesting or applying changes.
+3. Prefer editing existing files over creating new ones.
 
-### Project Structure
-- Description of top-level directories and their purpose.
-- Location of entry points, configuration, tests, and build output.
+### Scope
+- Make only the changes asked for — nothing more.
+- Do not refactor surrounding code, add comments, or improve unrelated areas.
+- Do not add abstractions, helpers, or utilities unless they are directly required.
+- Do not future-proof. Write for the current requirement.
 
-### Testing
-- How to run tests (e.g., `npm test`, `pytest`, `cargo test`).
-- Required test coverage expectations.
-- Where test files live relative to source files.
-
-### Building & Running
-- How to install dependencies.
-- How to run the project locally.
-- Environment variable setup (`.env.example` location, required keys).
-
-### CI/CD
-- Pipeline configuration location and behavior.
-- What must pass before merging (lint, type-check, tests).
-
-## AI Assistant Guidelines
-
-### General
-- Read files before modifying them.
-- Prefer editing existing files over creating new ones.
-- Do not add unnecessary abstractions, helpers, or future-proofing.
-- Keep changes minimal and focused on the task at hand.
+### Code Quality
+- No error handling for impossible scenarios.
+- No docstrings, type annotations, or comments on code you didn't change.
+- Three duplicated lines beat one premature abstraction.
 
 ### Security
-- Never commit secrets, tokens, or credentials.
-- Validate user input at system boundaries; trust internal code.
-- Avoid introducing OWASP Top 10 vulnerabilities (XSS, SQLi, command injection, etc.).
+- Never commit secrets, tokens, API keys, or credentials.
+- Validate at system boundaries (user input, external APIs); trust internal code.
+- Avoid OWASP Top 10 issues: XSS, SQL injection, command injection, etc.
 
-### Risky Actions — Always Confirm First
-The following require explicit user confirmation before proceeding:
+### Require User Confirmation Before
 - Deleting files or branches
 - Force-pushing
-- Running `git reset --hard` or destructive git operations
-- Pushing to `main`/`master`
+- `git reset --hard` or any destructive git operation
+- Pushing to `main` or `master`
 - Modifying CI/CD pipelines
-- Any action visible to other collaborators
+- Any action visible to other collaborators (comments, PR changes, etc.)
 
-### Over-Engineering Avoidance
-- Do not add error handling for scenarios that cannot occur.
-- Do not create utilities for one-time operations.
-- Do not add docstrings, comments, or type annotations to unchanged code.
-- Three similar lines of code is better than a premature abstraction.
+---
 
-## Updating This File
+## Sections to Complete as the Project Grows
 
-This CLAUDE.md should be updated whenever:
-- New languages, frameworks, or tools are added to the project.
-- Development workflows change.
-- New conventions are established.
-- Significant architectural decisions are made.
+When source code is added, fill in the following:
+
+### Language & Tooling
+> _Add language version, runtime, package manager, linter, formatter._
+
+### Project Structure
+> _Describe top-level directories, entry points, config location, build output._
+
+### Running Locally
+```bash
+# Add install and run commands here
+```
+
+### Testing
+```bash
+# Add test commands here
+```
+> _Note test file locations and coverage expectations._
+
+### Environment Variables
+> _List required env vars and point to `.env.example`._
+
+### CI/CD
+> _Describe pipeline location and what must pass before merging._
+
+---
+
+## Keeping This File Current
+
+Update CLAUDE.md when:
+- A language, framework, or tool is added or removed.
+- A workflow or convention changes.
+- A significant architectural decision is made.
