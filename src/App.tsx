@@ -18,6 +18,7 @@ import { MLDashboard } from './components/MLDashboard';
 import { GraphTheory } from './components/GraphTheory';
 import { QuantumCircuit } from './components/QuantumCircuit';
 import { TimeSeriesAnalysis } from './components/TimeSeriesAnalysis';
+import { ChaosExplorer } from './components/ChaosExplorer';
 import './index.css';
 
 type Tab =
@@ -26,7 +27,8 @@ type Tab =
   | 'calculus' | 'matrix' | 'diffeq'
   | 'fourier' | 'distribution' | 'numbertheory'
   | 'tensor' | 'geometry' | 'ml'
-  | 'graphtheory' | 'quantum' | 'timeseries';
+  | 'graphtheory' | 'quantum' | 'timeseries'
+  | 'chaos';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'calculator', label: 'Calculator' },
@@ -48,6 +50,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'graphtheory', label: 'Graph Theory' },
   { id: 'quantum', label: 'Quantum' },
   { id: 'timeseries', label: 'Time Series' },
+  { id: 'chaos', label: 'Chaos Theory' },
 ];
 
 function App() {
@@ -87,6 +90,7 @@ function App() {
         {activeTab === 'graphtheory' && <GraphTheory />}
         {activeTab === 'quantum' && <QuantumCircuit />}
         {activeTab === 'timeseries' && <TimeSeriesAnalysis />}
+        {activeTab === 'chaos' && <ChaosExplorer />}
       </div>
     </div>
   );

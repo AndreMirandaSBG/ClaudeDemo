@@ -24,6 +24,12 @@ const mockCtx = {
   getLineDash: vi.fn().mockReturnValue([]),
   measureText: vi.fn().mockReturnValue({ width: 0 }),
   createLinearGradient: vi.fn().mockReturnValue({ addColorStop: vi.fn() }),
+  createImageData: vi.fn().mockReturnValue({
+    data: new Uint8ClampedArray(300 * 300 * 4),
+    width: 300,
+    height: 300,
+  }),
+  putImageData: vi.fn(),
   canvas: { width: 300, height: 300 },
   fillStyle: '',
   strokeStyle: '',
