@@ -63,7 +63,7 @@ export function runDijkstra(
 }
 
 export function runBFS(
-  nodes: GTNode[], edges: GTEdge[], sourceId: number, directed: boolean,
+  _nodes: GTNode[], edges: GTEdge[], sourceId: number, directed: boolean,
 ): GTAlgorithmResult {
   const visited: number[] = [];
   const visitedSet = new Set<number>();
@@ -86,7 +86,7 @@ export function runBFS(
 }
 
 export function runDFS(
-  nodes: GTNode[], edges: GTEdge[], sourceId: number, directed: boolean,
+  _nodes: GTNode[], edges: GTEdge[], sourceId: number, directed: boolean,
 ): GTAlgorithmResult {
   const visited: number[] = [];
   const visitedSet = new Set<number>();

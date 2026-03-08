@@ -3,7 +3,6 @@ import { describe, it, expect } from 'vitest';
 import { useQuantum, simulateCircuit, computeEntanglement, generateQASM } from './useQuantum';
 import type { QuantumGateApplication } from '../types/calculator';
 
-const EPS = 1e-9;
 const near = (a: number, b: number) => Math.abs(a - b) < 1e-6;
 
 describe('simulateCircuit', () => {
@@ -38,8 +37,7 @@ describe('simulateCircuit', () => {
       { id: 1, gate: 'CNOT', qubit: 1, column: 1, controlQubit: 0 },
     ];
     const sv = simulateCircuit(gates, 2);
-    const S2 = 1 / Math.SQRT2;
-    // |00⟩ and |11⟩ each with amplitude 1/√2
+    // |00⟩ and |11⟩ each with probability 0.5
     expect(near(sv[0].re ** 2 + sv[0].im ** 2, 0.5)).toBe(true); // |00⟩
     expect(near(sv[3].re ** 2 + sv[3].im ** 2, 0.5)).toBe(true); // |11⟩
     expect(near(sv[1].re ** 2 + sv[1].im ** 2, 0)).toBe(true);   // |01⟩ = 0
@@ -138,8 +136,7 @@ describe('useQuantum hook', () => {
     const { result } = renderHook(() => useQuantum());
     act(() => result.current.addGate('H', 0, 0));
     const sv = result.current.state.stateVector;
-    const S2 = 1 / Math.SQRT2;
-    // After H on qubit 0 of 3 qubits: |0xx⟩ and |1xx⟩ each with amp 1/√2 per group
+    // After H on qubit 0 of 3 qubits: total probability must equal 1
     const totalProb = sv.reduce((s, c) => s + c.re ** 2 + c.im ** 2, 0);
     expect(near(totalProb, 1)).toBe(true);
   });
