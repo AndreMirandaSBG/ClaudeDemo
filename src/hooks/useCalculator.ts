@@ -84,7 +84,12 @@ function fromRadians(v: number, mode: AngleMode): number {
 
 class Parser {
   private pos = 0;
-  constructor(private tokens: Token[], private mode: AngleMode) {}
+  private tokens: Token[];
+  private mode: AngleMode;
+  constructor(tokens: Token[], mode: AngleMode) {
+    this.tokens = tokens;
+    this.mode = mode;
+  }
 
   parse(): number {
     const v = this.parseExpr();

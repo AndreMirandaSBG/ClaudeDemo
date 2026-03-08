@@ -71,6 +71,27 @@ it('does something', () => {
 import { defineConfig } from 'vitest/config'
 ```
 
+### `erasableSyntaxOnly` restrictions
+
+The tsconfig has `erasableSyntaxOnly: true`, which forbids TypeScript-specific syntax that can't be stripped by a simple erase. Do **not** use:
+
+- `const enum` — use a regular `type` union instead
+- `namespace` / `module` declarations
+- Parameter properties in class constructors (`constructor(private x: T)`) — declare fields explicitly instead:
+
+```ts
+// ❌ not allowed
+class Foo {
+  constructor(private x: number) {}
+}
+
+// ✅ correct
+class Foo {
+  private x: number;
+  constructor(x: number) { this.x = x; }
+}
+```
+
 ## Branch Naming
 
 All Claude-created branches must follow this pattern:
