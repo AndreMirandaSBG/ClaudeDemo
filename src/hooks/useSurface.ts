@@ -59,7 +59,8 @@ function stokenize(expr: string, vars: Record<string, number>): SToken[] {
 
 class SParser {
   private pos = 0;
-  constructor(private tokens: SToken[]) {}
+  private tokens: SToken[];
+  constructor(tokens: SToken[]) { this.tokens = tokens; }
 
   parse(): number {
     const v = this.parseExpr();

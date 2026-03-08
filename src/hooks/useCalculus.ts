@@ -59,7 +59,8 @@ function ctokenize(expr: string, x: number): CToken[] {
 
 class CParser {
   private pos = 0;
-  constructor(private tokens: CToken[]) {}
+  private tokens: CToken[];
+  constructor(tokens: CToken[]) { this.tokens = tokens; }
 
   parse(): number {
     const v = this.parseExpr();

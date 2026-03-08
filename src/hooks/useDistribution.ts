@@ -25,10 +25,6 @@ function gammaLn(z: number): number {
   return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
 }
 
-function gamma(z: number): number {
-  return Math.exp(gammaLn(z));
-}
-
 function betaFn(a: number, b: number): number {
   return Math.exp(gammaLn(a) + gammaLn(b) - gammaLn(a + b));
 }
@@ -75,12 +71,6 @@ function betaCF(x: number, a: number, b: number): number {
   return h;
 }
 
-// Regularized incomplete gamma (upper)
-function incompleteGammaUpper(a: number, x: number): number {
-  if (x < 0) return 1;
-  if (x === 0) return 1;
-  return 1 - incompleteGammaLower(a, x);
-}
 
 function incompleteGammaLower(a: number, x: number): number {
   // Series expansion

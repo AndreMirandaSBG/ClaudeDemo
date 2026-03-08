@@ -5,7 +5,6 @@ import {
   formatPolar,
   complexModulus,
   complexArgument,
-  complexNthRoots,
 } from '../hooks/useComplex';
 import type { ComplexNumber } from '../types/calculator';
 

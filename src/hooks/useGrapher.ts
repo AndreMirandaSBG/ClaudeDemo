@@ -60,7 +60,8 @@ function gtokenize(expr: string, xVal: number): GToken[] {
 
 class GParser {
   private pos = 0;
-  constructor(private tokens: GToken[]) {}
+  private tokens: GToken[];
+  constructor(tokens: GToken[]) { this.tokens = tokens; }
 
   parse(): number {
     const v = this.parseExpr();

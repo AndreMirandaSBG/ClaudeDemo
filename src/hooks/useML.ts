@@ -90,7 +90,6 @@ export function polynomialRegression(points: MLDataPoint[], degree: number): num
 
   // Build normal equations: (V^T V) c = V^T y
   // Vandermonde matrix rows: [1, x, x^2, ..., x^degree]
-  const n = points.length;
 
   // Compute sums of x^k for k = 0..2*degree
   const xPow: number[] = new Array(2 * degree + 1).fill(0);

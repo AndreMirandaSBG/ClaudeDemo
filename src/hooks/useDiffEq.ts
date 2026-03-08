@@ -53,7 +53,8 @@ function dtokenize(expr: string, x: number, y: number): DToken[] {
 
 class DParser {
   private pos = 0;
-  constructor(private tokens: DToken[]) {}
+  private tokens: DToken[];
+  constructor(tokens: DToken[]) { this.tokens = tokens; }
 
   parse(): number {
     const v = this.parseExpr();

@@ -12,13 +12,6 @@ function toCanvasY(y: number, vp: GraphViewport, h: number): number {
   return ((vp.yMax - y) / (vp.yMax - vp.yMin)) * h;
 }
 
-function fromCanvasX(cx: number, vp: GraphViewport, w: number): number {
-  return vp.xMin + (cx / w) * (vp.xMax - vp.xMin);
-}
-
-function fromCanvasY(cy: number, vp: GraphViewport, h: number): number {
-  return vp.yMax - (cy / h) * (vp.yMax - vp.yMin);
-}
 
 function drawGrid(ctx: CanvasRenderingContext2D, vp: GraphViewport, w: number, h: number) {
   ctx.clearRect(0, 0, w, h);
