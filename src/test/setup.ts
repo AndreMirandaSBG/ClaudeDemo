@@ -20,6 +20,8 @@ const mockCtx = {
   save: vi.fn(),
   restore: vi.fn(),
   setTransform: vi.fn(),
+  setLineDash: vi.fn(),
+  getLineDash: vi.fn().mockReturnValue([]),
   measureText: vi.fn().mockReturnValue({ width: 0 }),
   createLinearGradient: vi.fn().mockReturnValue({ addColorStop: vi.fn() }),
   canvas: { width: 300, height: 300 },

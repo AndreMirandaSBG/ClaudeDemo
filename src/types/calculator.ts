@@ -246,3 +246,59 @@ export interface DiffEqState {
   yMin: number;
   yMax: number;
 }
+
+// ─── Tensor / Multivariable Calculus types ────────────────────────────────────
+
+export type TensorMode = 'gradient' | 'divergence' | 'curl' | 'jacobian' | 'hessian' | 'gradient-descent';
+
+export interface TensorState {
+  mode: TensorMode;
+  fExpr: string;
+  fxExpr: string;
+  fyExpr: string;
+  learningRate: number;
+  gdSteps: number;
+  startX: number;
+  startY: number;
+}
+
+// ─── Geometry / Topology types ────────────────────────────────────────────────
+
+export type GeometryMode = 'euclidean' | 'conics' | 'surfaces';
+export type ConicType = 'ellipse' | 'parabola' | 'hyperbola';
+export type Surface3DType = 'mobius' | 'torus' | 'klein';
+
+export interface GeometryPoint {
+  x: number;
+  y: number;
+}
+
+export interface GeometryState {
+  mode: GeometryMode;
+  conicType: ConicType;
+  conicA: number;
+  conicB: number;
+  surface3D: Surface3DType;
+  rotX: number;
+  rotY: number;
+  points: GeometryPoint[];
+}
+
+// ─── Machine Learning types ───────────────────────────────────────────────────
+
+export type MLMode = 'regression' | 'kmeans' | 'classification';
+export type RegressionType = 'linear' | 'polynomial' | 'exponential';
+
+export interface MLDataPoint {
+  x: number;
+  y: number;
+  label?: number;
+}
+
+export interface MLState {
+  mode: MLMode;
+  regressionType: RegressionType;
+  polynomialDegree: number;
+  kClusters: number;
+  dataPoints: MLDataPoint[];
+}

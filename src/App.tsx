@@ -9,9 +9,20 @@ import { UnitConverter } from './components/UnitConverter';
 import { CalculusVisualizer } from './components/CalculusVisualizer';
 import { MatrixWorkspace } from './components/MatrixWorkspace';
 import { DiffEqSolver } from './components/DiffEqSolver';
+import { FourierAnalysis } from './components/FourierAnalysis';
+import { DistributionExplorer } from './components/DistributionExplorer';
+import { NumberTheory } from './components/NumberTheory';
+import { TensorCalc } from './components/TensorCalc';
+import { GeometryExplorer } from './components/GeometryExplorer';
+import { MLDashboard } from './components/MLDashboard';
 import './index.css';
 
-type Tab = 'calculator' | 'grapher' | 'statistics' | 'complex' | 'surface' | 'solver' | 'converter' | 'calculus' | 'matrix' | 'diffeq';
+type Tab =
+  | 'calculator' | 'grapher' | 'statistics' | 'complex'
+  | 'surface' | 'solver' | 'converter'
+  | 'calculus' | 'matrix' | 'diffeq'
+  | 'fourier' | 'distribution' | 'numbertheory'
+  | 'tensor' | 'geometry' | 'ml';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'calculator', label: 'Calculator' },
@@ -24,6 +35,12 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'calculus', label: 'Calculus' },
   { id: 'matrix', label: 'Matrix' },
   { id: 'diffeq', label: 'Diff Eq' },
+  { id: 'fourier', label: 'Fourier' },
+  { id: 'distribution', label: 'Distributions' },
+  { id: 'numbertheory', label: 'Number Theory' },
+  { id: 'tensor', label: 'Tensor Calc' },
+  { id: 'geometry', label: 'Geometry' },
+  { id: 'ml', label: 'ML Dashboard' },
 ];
 
 function App() {
@@ -54,6 +71,12 @@ function App() {
         {activeTab === 'calculus' && <CalculusVisualizer />}
         {activeTab === 'matrix' && <MatrixWorkspace />}
         {activeTab === 'diffeq' && <DiffEqSolver />}
+        {activeTab === 'fourier' && <FourierAnalysis />}
+        {activeTab === 'distribution' && <DistributionExplorer />}
+        {activeTab === 'numbertheory' && <NumberTheory />}
+        {activeTab === 'tensor' && <TensorCalc />}
+        {activeTab === 'geometry' && <GeometryExplorer />}
+        {activeTab === 'ml' && <MLDashboard />}
       </div>
     </div>
   );
