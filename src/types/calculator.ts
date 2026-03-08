@@ -421,3 +421,58 @@ export interface TimeSeriesState {
   maxLag: number;
   smoothingAlpha: number;
 }
+
+// ─── Chaos Theory types ───────────────────────────────────────────────────────
+
+export type ChaosMode = 'lorenz' | 'bifurcation' | 'fractal' | 'lyapunov';
+export type FractalType = 'mandelbrot' | 'julia';
+
+export interface LorenzPoint {
+  x: number;
+  y: number;
+  z: number;
+}
+
+export interface ChaosLorenzParams {
+  sigma: number;
+  rho: number;
+  beta: number;
+  dt: number;
+  steps: number;
+  tailLength: number;
+  playing: boolean;
+  currentStep: number;
+  rotX: number;
+  rotY: number;
+}
+
+export interface ChaosBifurcationParams {
+  rMin: number;
+  rMax: number;
+  iterations: number;
+  burnin: number;
+  zoomBox: { rMin: number; rMax: number; xMin: number; xMax: number } | null;
+}
+
+export interface ChaosFractalParams {
+  type: FractalType;
+  centerX: number;
+  centerY: number;
+  zoom: number;
+  maxIter: number;
+  juliaC: { re: number; im: number };
+  hslShift: number;
+}
+
+export interface ChaosLyapunovParams {
+  r: number;
+  iterations: number;
+}
+
+export interface ChaosState {
+  mode: ChaosMode;
+  lorenz: ChaosLorenzParams;
+  bifurcation: ChaosBifurcationParams;
+  fractal: ChaosFractalParams;
+  lyapunov: ChaosLyapunovParams;
+}
