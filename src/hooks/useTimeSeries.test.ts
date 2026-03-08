@@ -49,7 +49,7 @@ describe('decomposeSeries', () => {
   it('trend + seasonal + residual should approximately equal original', () => {
     const vals = Array.from({ length: 48 }, (_, t) => 10 + 0.5 * t + 3 * Math.sin(t * Math.PI / 6));
     const { trend, seasonal, residual } = decomposeSeries(vals, 12);
-    const recon = vals.map((v, i) => trend[i] + seasonal[i] + residual[i]);
+    const recon = vals.map((_v, i) => trend[i] + seasonal[i] + residual[i]);
     for (let i = 6; i < 42; i++) {
       expect(Math.abs(recon[i] - vals[i])).toBeLessThan(1e-6);
     }
