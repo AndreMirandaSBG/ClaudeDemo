@@ -1501,3 +1501,133 @@ body {
   align-items: center;
   gap: 6px;
 }
+
+/* ─── Graph Theory ─────────────────────────────────────────────────── */
+.gt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #ccc;
+  max-width: 1100px;
+  width: 100%;
+}
+.gt__top { display: flex; flex-direction: column; gap: 6px; }
+.gt__controls { display: flex; flex-direction: column; gap: 6px; }
+.gt__row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.gt__btn {
+  padding: 5px 12px; border: 1px solid #334; background: #1e2d50;
+  color: #ccc; border-radius: 6px; cursor: pointer; font-size: 12px;
+  transition: background 0.15s;
+}
+.gt__btn:hover { background: #2a3a6a; }
+.gt__btn--active { background: #2980b9; color: #fff; border-color: #3498db; }
+.gt__btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.gt__label { font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 5px; }
+.gt__label input[type="checkbox"] { cursor: pointer; }
+.gt__main { display: flex; gap: 12px; }
+.gt__canvas { border: 1px solid #334; border-radius: 8px; cursor: crosshair; flex-shrink: 0; }
+.gt__results {
+  flex: 1; min-width: 200px; background: #16213e; border-radius: 8px;
+  padding: 12px; display: flex; flex-direction: column; gap: 8px;
+}
+.gt__results-title { font-size: 14px; font-weight: 600; color: #fff; }
+.gt__hint { font-size: 12px; color: #666; }
+.gt__result-text { font-size: 12px; color: #ccc; line-height: 1.5; }
+.gt__table { border-collapse: collapse; font-size: 12px; width: 100%; }
+.gt__table th, .gt__table td { padding: 4px 8px; border-bottom: 1px solid #2a3a5a; text-align: left; }
+.gt__table th { color: #888; font-weight: 500; }
+.gt__table td { color: #ccc; }
+.gt__legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; font-size: 11px; color: #aaa; }
+.gt__legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
+.gt__step-label { font-size: 12px; color: #aaa; padding: 0 4px; }
+.gt__matrix-input { display: flex; flex-direction: column; gap: 6px; }
+.gt__textarea {
+  background: #0f1e3a; border: 1px solid #334; border-radius: 6px; color: #ccc;
+  font-family: monospace; font-size: 12px; padding: 8px; resize: vertical; width: 100%;
+}
+
+/* ─── Quantum Circuit ──────────────────────────────────────────────── */
+.qc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #ccc;
+  max-width: 1100px;
+  width: 100%;
+}
+.qc__controls { display: flex; flex-direction: column; gap: 6px; }
+.qc__row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.qc__btn {
+  padding: 5px 12px; border: 1px solid #334; background: #1e2d50;
+  color: #ccc; border-radius: 6px; cursor: pointer; font-size: 12px;
+  transition: background 0.15s;
+}
+.qc__btn:hover { background: #2a3a6a; }
+.qc__gate-btn {
+  padding: 5px 10px; border: 1px solid #445; background: #1a2540;
+  color: #ccc; border-radius: 5px; cursor: pointer; font-size: 12px; font-weight: 600;
+  transition: all 0.15s; min-width: 36px; text-align: center;
+}
+.qc__gate-btn:hover { background: #2a3a6a; }
+.qc__gate-btn--active { color: #fff; border-color: #fff; }
+.qc__label { font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 5px; }
+.qc__num-input {
+  width: 60px; background: #0f1e3a; border: 1px solid #334; border-radius: 4px;
+  color: #ccc; padding: 3px 6px; font-size: 12px;
+}
+.qc__hint { font-size: 11px; color: #666; }
+.qc__main { display: flex; gap: 12px; }
+.qc__circuit-wrap { overflow-x: auto; flex-shrink: 0; }
+.qc__canvas { border: 1px solid #334; border-radius: 8px; cursor: pointer; display: block; }
+.qc__side { display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 260px; }
+.qc__panel-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.qc__sv-panel, .qc__ent-panel {
+  background: #16213e; border-radius: 8px; padding: 10px;
+}
+.qc__sv-list { display: flex; flex-direction: column; gap: 4px; }
+.qc__sv-row { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+.qc__sv-ket { font-family: monospace; color: #7ec8e3; min-width: 60px; }
+.qc__sv-bar { height: 10px; background: #3498db; border-radius: 3px; transition: width 0.2s; }
+.qc__sv-prob { color: #f39c12; min-width: 40px; text-align: right; font-family: monospace; }
+.qc__sv-amp { color: #888; font-family: monospace; font-size: 10px; }
+.qc__ent-row { display: flex; align-items: center; gap: 6px; font-size: 11px; margin-bottom: 4px; }
+.qc__ent-label { font-family: monospace; color: #aaa; min-width: 20px; }
+.qc__ent-bar-bg { flex: 1; height: 10px; background: #0f1e3a; border-radius: 3px; overflow: hidden; }
+.qc__ent-bar { height: 100%; background: #f39c12; border-radius: 3px; transition: width 0.3s; }
+.qc__ent-val { color: #f39c12; font-family: monospace; min-width: 40px; text-align: right; font-size: 10px; }
+.qc__hist-wrap { background: #16213e; border-radius: 8px; padding: 10px; }
+.qc__hist { border: 1px solid #334; border-radius: 6px; display: block; }
+
+/* ─── Time Series Analysis ─────────────────────────────────────────── */
+.ts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #ccc;
+  max-width: 1100px;
+  width: 100%;
+}
+.ts__controls { display: flex; flex-direction: column; gap: 6px; }
+.ts__row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ts__btn {
+  padding: 5px 12px; border: 1px solid #334; background: #1e2d50;
+  color: #ccc; border-radius: 6px; cursor: pointer; font-size: 12px;
+  transition: background 0.15s;
+}
+.ts__btn:hover { background: #2a3a6a; }
+.ts__btn--active { background: #27ae60; color: #fff; border-color: #2ecc71; }
+.ts__label { font-size: 12px; color: #aaa; display: flex; align-items: center; gap: 5px; }
+.ts__num {
+  width: 65px; background: #0f1e3a; border: 1px solid #334; border-radius: 4px;
+  color: #ccc; padding: 3px 6px; font-size: 12px;
+}
+.ts__textarea {
+  width: 220px; background: #0f1e3a; border: 1px solid #334; border-radius: 6px;
+  color: #ccc; font-family: monospace; font-size: 12px; padding: 6px; resize: vertical;
+}
+.ts__canvas { border: 1px solid #334; border-radius: 8px; display: block; }
+.ts__canvas--sub { margin-top: 2px; }
+.ts__summary {
+  background: #16213e; border-radius: 8px; padding: 10px;
+  font-size: 12px; color: #aaa; display: flex; flex-direction: column; gap: 4px;
+}

@@ -15,6 +15,9 @@ import { NumberTheory } from './components/NumberTheory';
 import { TensorCalc } from './components/TensorCalc';
 import { GeometryExplorer } from './components/GeometryExplorer';
 import { MLDashboard } from './components/MLDashboard';
+import { GraphTheory } from './components/GraphTheory';
+import { QuantumCircuit } from './components/QuantumCircuit';
+import { TimeSeriesAnalysis } from './components/TimeSeriesAnalysis';
 import './index.css';
 
 type Tab =
@@ -22,7 +25,8 @@ type Tab =
   | 'surface' | 'solver' | 'converter'
   | 'calculus' | 'matrix' | 'diffeq'
   | 'fourier' | 'distribution' | 'numbertheory'
-  | 'tensor' | 'geometry' | 'ml';
+  | 'tensor' | 'geometry' | 'ml'
+  | 'graphtheory' | 'quantum' | 'timeseries';
 
 const TABS: { id: Tab; label: string }[] = [
   { id: 'calculator', label: 'Calculator' },
@@ -41,6 +45,9 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'tensor', label: 'Tensor Calc' },
   { id: 'geometry', label: 'Geometry' },
   { id: 'ml', label: 'ML Dashboard' },
+  { id: 'graphtheory', label: 'Graph Theory' },
+  { id: 'quantum', label: 'Quantum' },
+  { id: 'timeseries', label: 'Time Series' },
 ];
 
 function App() {
@@ -77,6 +84,9 @@ function App() {
         {activeTab === 'tensor' && <TensorCalc />}
         {activeTab === 'geometry' && <GeometryExplorer />}
         {activeTab === 'ml' && <MLDashboard />}
+        {activeTab === 'graphtheory' && <GraphTheory />}
+        {activeTab === 'quantum' && <QuantumCircuit />}
+        {activeTab === 'timeseries' && <TimeSeriesAnalysis />}
       </div>
     </div>
   );

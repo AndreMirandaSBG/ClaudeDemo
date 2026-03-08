@@ -302,3 +302,122 @@ export interface MLState {
   kClusters: number;
   dataPoints: MLDataPoint[];
 }
+
+// ─── Graph Theory types ───────────────────────────────────────────────────────
+
+export interface GTNode {
+  id: number;
+  x: number;
+  y: number;
+  label: string;
+}
+
+export interface GTEdge {
+  id: number;
+  from: number;
+  to: number;
+  weight: number;
+}
+
+export type GTAlgorithm =
+  | 'dijkstra' | 'bellman-ford' | 'bfs' | 'dfs'
+  | 'kruskal' | 'prim' | 'centrality' | 'scc';
+
+export interface GTAlgorithmResult {
+  type: GTAlgorithm;
+  distances?: Record<number, number>;
+  previous?: Record<number, number | null>;
+  visited?: number[];
+  mstEdges?: number[];
+  centrality?: Record<number, number>;
+  sccGroups?: number[][];
+  animationSteps?: { visitedNodes: number[]; activeEdges: number[] }[];
+  currentStep: number;
+}
+
+export type GTCanvasMode = 'view' | 'addNode' | 'addEdge' | 'selectSource';
+
+export interface GraphTheoryState {
+  nodes: GTNode[];
+  edges: GTEdge[];
+  directed: boolean;
+  weighted: boolean;
+  algorithm: GTAlgorithm;
+  sourceNode: number;
+  algorithmResult: GTAlgorithmResult | null;
+  inputMode: 'visual' | 'matrix';
+  adjMatrixText: string;
+  canvasMode: GTCanvasMode;
+  selectedNode: number | null;
+}
+
+// ─── Quantum Circuit types ────────────────────────────────────────────────────
+
+export type SingleQubitGate = 'H' | 'X' | 'Y' | 'Z' | 'S' | 'T' | 'Rx' | 'Ry' | 'Rz';
+export type MultiQubitGate = 'CNOT' | 'CZ' | 'SWAP' | 'Toffoli';
+export type QuantumGateType = SingleQubitGate | MultiQubitGate;
+
+export interface QuantumGateApplication {
+  id: number;
+  gate: QuantumGateType;
+  qubit: number;
+  controlQubit?: number;
+  control2Qubit?: number;
+  angle?: number;
+  column: number;
+}
+
+export interface QuantumMeasurement {
+  state: string;
+  probability: number;
+  count: number;
+}
+
+export interface QuantumCircuitState {
+  numQubits: number;
+  gates: QuantumGateApplication[];
+  shotCount: number;
+  measurements: QuantumMeasurement[];
+  stateVector: { re: number; im: number }[];
+  entanglementEntropy: number[];
+}
+
+// ─── Time Series types ────────────────────────────────────────────────────────
+
+export interface TimeSeriesPoint {
+  t: number;
+  value: number;
+}
+
+export type TimeSeriesMode = 'data' | 'decompose' | 'acf' | 'forecast';
+
+export interface ACFPoint {
+  lag: number;
+  acf: number;
+  pacf: number;
+}
+
+export interface TimeSeriesDecomposition {
+  trend: number[];
+  seasonal: number[];
+  residual: number[];
+}
+
+export interface TimeSeriesForecast {
+  point: number[];
+  lower: number[];
+  upper: number[];
+}
+
+export interface TimeSeriesState {
+  data: TimeSeriesPoint[];
+  mode: TimeSeriesMode;
+  seasonalPeriod: number;
+  forecastSteps: number;
+  differencing: number;
+  decomposition: TimeSeriesDecomposition | null;
+  acf: ACFPoint[];
+  forecast: TimeSeriesForecast | null;
+  maxLag: number;
+  smoothingAlpha: number;
+}
